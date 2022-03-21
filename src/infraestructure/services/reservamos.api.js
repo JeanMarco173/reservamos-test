@@ -1,7 +1,7 @@
 import { reservamosAPI } from "../../application/persist/config.js";
 import axios from "axios";
 
-const getCities = async (query) => {
+const searchCities = async (query) => {
   try {
     const url = `${reservamosAPI}api/v2/places?q=${query}`;
     const { data } = await axios.get(url);
@@ -17,4 +17,4 @@ const getCities = async (query) => {
   }
 };
 
-export { getCities };
+export { searchCities };

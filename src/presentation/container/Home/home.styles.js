@@ -12,11 +12,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  logo: {
-    width: "100%",
-    height: 30,
-    resizeMode: "contain",
-  },
   body: {
     height: bodyHeight,
     width: "100%",

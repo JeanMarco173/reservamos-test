@@ -6,7 +6,7 @@ import axios from "axios";
 
 const getWeatherFor7Days = async (query) => {
   try {
-    const url = `${OpenWeatherAPI}data/2.5/onecall?lat=${query.lat}&lon=${query.lon}exclude=minutely,hourly,alert&appid=${OpenWeatherToken}&lang=es&units=metric`;
+    const url = `${OpenWeatherAPI}data/2.5/onecall?lat=${query.lat}&lon=${query.lon}&exclude=minutely,hourly,alert&appid=${OpenWeatherToken}&lang=en&units=metric`;
     const { data } = await axios.get(url);
     if (!data.code) {
       return data.daily;

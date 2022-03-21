@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   SafeAreaView,
   View,
@@ -7,59 +7,29 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-
 import WeatherList from "../../../infraestructure/components/weatherList/WeatherList.jsx";
+
+import { useStore } from "../../../application/store/CitiesProvider.js";
 
 import commonStyles from "../../../infraestructure/components/styles/common.styles.js";
 import styles from "./home.styles.js";
 
 const Home = ({ navigation }) => {
-  const destinations = [
-    {
-      id: 1,
-      display: "Cusco",
-      weatherPronostic: [
-        {
-          dt: 1647799200,
-          temp: { max: 25, min: 7 },
-          weather: { main: "clear sky" },
-        },
-        {
-          dt: 1647799200,
-          temp: { max: 25, min: 7 },
-          weather: { main: "clear sky" },
-        },
-        {
-          dt: 1647799200,
-          temp: { max: 25, min: 7 },
-          weather: { main: "rain" },
-        },
-      ],
-    },
-    {
-      id: 2,
-      display: "Name Test",
-      weatherPronostic: [
-        {
-          dt: 1647799200,
-          temp: { max: 25, min: 7 },
-          weather: { main: "clear sky" },
-        },
-      ],
-    },
-  ];
+  const { cities } = useStore();
 
   return (
     <SafeAreaView style={commonStyles.container}>
       <View style={styles.header}>
         <Image
-          style={styles.logo}
+          style={commonStyles.logo}
           source={require("../../../../assets/reservamos-logo.png")}
         />
       </View>
       <View style={styles.body}>
         <View style={styles.finder__container}>
-          <Text style={styles.finder__label}>¿A dónde quieres viajar?</Text>
+          <Text style={styles.finder__label}>
+            Conoce el pronóstico del tiempo antes de viajar
+          </Text>
           <TouchableOpacity
             style={styles.finder__button}
             onPress={() => navigation.navigate("PlaceFinderScreen")}
@@ -68,7 +38,11 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.cities__container}>
-          <FlatList data={destinations} renderItem={WeatherList} />
+          <FlatList
+            data={cities}
+            renderItem={WeatherList}
+            keyExtractor={(item) => item.id}
+          />
         </View>
       </View>
     </SafeAreaView>

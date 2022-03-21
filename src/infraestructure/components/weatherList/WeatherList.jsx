@@ -15,7 +15,7 @@ const WeatherList = ({ item }) => {
             <WeatherCard
               key={element.dt}
               date={parseInt(element.dt)}
-              type={element.weather.main}
+              type={element.weather[0].description}
               maxTemp={parseInt(element.temp.max)}
               minTemp={parseInt(element.temp.min)}
             />
