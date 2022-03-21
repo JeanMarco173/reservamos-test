@@ -27,7 +27,7 @@ const WeatherList = (props) => {
             type={item.weather[0].main}
           />
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => index}
       />
     </View>
   );
