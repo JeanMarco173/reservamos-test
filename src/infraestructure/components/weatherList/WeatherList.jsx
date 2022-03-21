@@ -1,30 +1,34 @@
 import React from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 import WeatherCard from "../weatherCard/WeatherCard.jsx";
 
 import styles from "./weatherList.styles.js";
 
-const WeatherList = ({ item }) => {
+const WeatherList = (props) => {
+  const { city, deleteCity } = props;
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.header__container}>
-        <Text style={styles.city__name__text}>{item.display}</Text>
-        <Feather name="delete" size={24} color="#254A5A" />
-      </TouchableOpacity>
-      <ScrollView horizontal={true}>
-        {item.weatherPronostic.length &&
-          item.weatherPronostic.map((element) => (
-            <WeatherCard
-              key={element.dt}
-              date={parseInt(element.dt)}
-              type={element.weather[0].main}
-              maxTemp={parseInt(element.temp.max)}
-              minTemp={parseInt(element.temp.min)}
-            />
-          ))}
-      </ScrollView>
+      <View style={styles.header__container}>
+        <Text style={styles.city__name__text}>{city.display}</Text>
+        <TouchableOpacity onPress={() => deleteCity(city.id)}>
+          <Feather name="delete" size={24} color="#254A5A" />
+        </TouchableOpacity>
+      </View>
+      <FlatList
+        horizontal={true}
+        data={city.weatherPronostic}
+        renderItem={({ item }) => (
+          <WeatherCard
+            date={item.dt}
+            maxTemp={item.temp.max}
+            minTemp={item.temp.min}
+            type={item.weather[0].main}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 };

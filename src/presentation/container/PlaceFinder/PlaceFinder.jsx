@@ -49,7 +49,7 @@ const PlaceFinder = ({ navigation }) => {
         display: city.display,
         weatherPronostic: response,
       };
-      dispatch({ type: types.add, payload: newCity });
+      dispatch({ type: types.add, payload: { newCity } });
       navigation.goBack();
     } else {
       setMessage(response.message);
