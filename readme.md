@@ -16,9 +16,13 @@ y máxima de estos destinos.
   ```
 2. Instalar las dependencias
   ```js
-  expo install
+  npm install
   ```
-3. Ejecutar el proyecto
+3. Crear el archivo config para setear variables de configuración
+  ```
+  ruta: src/application/persist
+  ```
+4. Ejecutar el proyecto
   ```js
   expo start
   ```
