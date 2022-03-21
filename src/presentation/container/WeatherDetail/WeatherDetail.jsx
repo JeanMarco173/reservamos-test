@@ -7,19 +7,17 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import commonStyles from "../../infraestructure/components/styles/common.styles.js";
+import commonStyles from "../../../infraestructure/components/styles/common.styles.js";
 
-const Home = ({ navigation }) => {
+const WeatherDetail = ({ navigation }) => {
   return (
     <SafeAreaView style={commonStyles.container}>
       <Text>Home</Text>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("WeatherDetailScreen")}
-      >
-        <Text>Detalle</Text>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text>Return</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
 };
 
-export default Home;
+export default WeatherDetail;

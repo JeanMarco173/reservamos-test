@@ -7,12 +7,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import commonStyles from "../../infraestructure/components/styles/common.styles.js";
+import commonStyles from "./placeFinder.styles.js";
 
-const WeatherDetail = ({ navigation }) => {
+const PlaceFinder = ({ navigation }) => {
   return (
     <SafeAreaView style={commonStyles.container}>
-      <Text>Home</Text>
+      <Text>Ciudad</Text>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Text>Return</Text>
       </TouchableOpacity>
@@ -20,4 +20,4 @@ const WeatherDetail = ({ navigation }) => {
   );
 };
 
-export default WeatherDetail;
+export default PlaceFinder;
