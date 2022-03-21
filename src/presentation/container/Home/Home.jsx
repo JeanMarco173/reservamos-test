@@ -9,13 +9,17 @@ import {
 } from "react-native";
 import WeatherList from "../../../infraestructure/components/weatherList/WeatherList.jsx";
 
-import { useStore } from "../../../application/store/CitiesProvider.js";
+import {
+  useDispatch,
+  useStore,
+} from "../../../application/store/CitiesProvider.js";
 
 import commonStyles from "../../../infraestructure/components/styles/common.styles.js";
 import styles from "./home.styles.js";
 
 const Home = ({ navigation }) => {
   const { cities } = useStore();
+  const dispatch = useDispatch();
 
   return (
     <SafeAreaView style={commonStyles.container}>
